@@ -1,0 +1,32 @@
+{
+  "name": "post-controller",
+  "version": "0.0.0",
+  "description": "Generic update requests controller",
+  "author": "Mariusz Nowak <medyk@medikoo.com> (http://www.medikoo.com/)",
+  "keywords": [
+    "post",
+    "http",
+    "ajax",
+    "db",
+    "database"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/medikoo/post-controller.git"
+  },
+  "dependencies": {
+    "es5-ext": "~0.10.5",
+    "controller-router": "git://github.com/medikoo/controller-router.git"
+  },
+  "devDependencies": {
+    "tad": "~0.2.1",
+    "xlint": "~0.2.1",
+    "xlint-jslint-medikoo": "~0.1.2"
+  },
+  "scripts": {
+    "lint": "node node_modules/xlint/bin/xlint --linter=node_modules/xlint-jslint-medikoo/index.js --no-cache --no-stream",
+    "lint-console": "node node_modules/xlint/bin/xlint --linter=node_modules/xlint-jslint-medikoo/index.js --watch",
+    "test": "node node_modules/tad/bin/tad"
+  },
+  "license": "MIT"
+}
