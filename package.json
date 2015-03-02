@@ -1,5 +1,5 @@
 {
-  "name": "post-controller",
+  "name": "post-controller-router",
   "version": "0.0.0",
   "description": "Generic update requests controller",
   "author": "Mariusz Nowak <medyk@medikoo.com> (http://www.medikoo.com/)",
