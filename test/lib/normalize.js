@@ -10,7 +10,7 @@ module.exports = function (t, a) {
 			save: function () { called.push('foo:save'); },
 			returnUrl: 'marko'
 		},
-		elo: {
+		'elo/[a-z]+': {
 			match: function (a1) { called.push('elo:match'); },
 			validate: function () { called.push('elo:validate'); },
 			save: function () { called.push('elo:save'); }
@@ -23,8 +23,9 @@ module.exports = function (t, a) {
 
 	a(result.foo.returnUrl, 'marko');
 
-	a.deep(result.elo, { match: conf.elo.match, controller: result.elo.controller });
-	result.elo.controller();
+	a.deep(result['elo/[a-z]+'], { match: conf['elo/[a-z]+'].match,
+		controller: result['elo/[a-z]+'].controller });
+	result['elo/[a-z]+'].controller();
 	a.deep(called, ['elo:validate', 'elo:save']);
 	clear.call(called);
 

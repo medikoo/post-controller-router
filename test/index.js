@@ -10,7 +10,7 @@ module.exports = function (t, a) {
 			save: function () { called.push('foo:save'); },
 			returnUrl: 'marko'
 		},
-		elo: {
+		'elo/[a-z]+': {
 			match: function (a1) { called.push('elo:match'); return true; },
 			validate: function () { called.push('elo:validate'); },
 			save: function () { called.push('elo:save'); }
