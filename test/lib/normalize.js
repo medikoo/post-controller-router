@@ -52,7 +52,7 @@ module.exports = function (t, a) {
 	conf.bla = true;
 	t(conf, opts);
 
-	conf.foo.save = false;
+	conf.foo.remoteSave = true;
 	a.throws(function () { t(conf, opts); }, 'MISSING_REMOTE_SAVE');
 
 	opts.remoteSave = function () {};
