@@ -8,7 +8,7 @@ module.exports = function (t, a) {
 		foo: {
 			validate: function () { called.push('foo:validate'); },
 			save: function () { called.push('foo:save'); },
-			returnUrl: 'marko'
+			redirectUrl: 'marko'
 		},
 		'elo/[a-z]+': {
 			match: function (a1) { called.push('elo:match'); },
@@ -21,7 +21,7 @@ module.exports = function (t, a) {
 	a.deep(called, ['foo:validate', 'foo:save']);
 	clear.call(called);
 
-	a(result.foo.returnUrl, 'marko');
+	a(result.foo.redirectUrl, 'marko');
 
 	a.deep(result['elo/[a-z]+'], { match: conf['elo/[a-z]+'].match,
 		controller: result['elo/[a-z]+'].controller });
