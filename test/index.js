@@ -14,9 +14,10 @@ module.exports = function (t, a) {
 			match: function (a1) { called.push('elo:match'); return true; },
 			validate: function () { called.push('elo:validate'); },
 			save: function () { called.push('elo:save'); }
-		}
+		},
+		miszka: true
 	};
-	router = t(conf);
+	router = t(conf, { validate: function (x) { return x; }, save: function () {} });
 	a(router('foo'), true);
 	a.deep(called, ['foo:validate', 'foo:save']);
 	clear.call(called);

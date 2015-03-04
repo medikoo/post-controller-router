@@ -19,5 +19,5 @@ var normalizeResult = function (result, conf) {
 module.exports = function (conf/*, options*/) {
 	var options = normalizeOptions(arguments[1]);
 	if (!options.normalizeResult) options.normalizeResult = normalizeResult;
-	return getRouter(normalize(conf), options);
+	return getRouter(normalize(conf, options), options);
 };
