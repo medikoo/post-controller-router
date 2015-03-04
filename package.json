@@ -16,7 +16,8 @@
   },
   "dependencies": {
     "es5-ext": "~0.10.5",
-    "controller-router": "git://github.com/medikoo/controller-router.git"
+    "controller-router": "git://github.com/medikoo/controller-router.git",
+    "is-promise": "2"
   },
   "devDependencies": {
     "tad": "~0.2.1",
