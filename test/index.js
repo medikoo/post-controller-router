@@ -15,14 +15,36 @@ module.exports = function (t, a) {
 			validate: function () { called.push('elo:validate'); },
 			save: function () { called.push('elo:save'); }
 		},
-		miszka: true
+		miszka: true,
+		remote: {
+			remoteSave: function (x) {
+				called.push('remote:remoteSave');
+				return x;
+			},
+			processResponse: function (x) {
+				called.push('remote:processResponse');
+				return x;
+			}
+		}
 	};
-	router = t(conf, { validate: function (x) { return x; }, save: function () {} });
+	router = t(conf, {
+		validate: function (x) {
+			called.push('validate');
+			return x;
+		},
+		save: function () {
+			called.push('save');
+		}
+	});
 	a(router('foo'), true);
 	a.deep(called, ['foo:validate', 'foo:save']);
 	clear.call(called);
 
 	a(router('elo/fiszka'), true);
 	a.deep(called, ['elo:match', 'elo:validate', 'elo:save']);
+	clear.call(called);
+
+	a(router('remote'), true);
+	a.deep(called, ['validate', 'remote:remoteSave', 'remote:processResponse']);
 	clear.call(called);
 };
