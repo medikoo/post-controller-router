@@ -36,15 +36,15 @@ module.exports = function (t, a) {
 			called.push('save');
 		}
 	});
-	a(router('foo'), true);
+	a.deep(router('foo'), { conf: router.routes.foo, result: undefined });
 	a.deep(called, ['foo:validate', 'foo:save']);
 	clear.call(called);
 
-	a(router('elo/fiszka'), true);
+	a.deep(router('elo/fiszka'), { conf: router.routes['elo/[a-z]+'], result: undefined });
 	a.deep(called, ['elo:match', 'elo:validate', 'elo:save']);
 	clear.call(called);
 
-	a(router('remote'), true);
+	a.deep(router('remote'), { conf: router.routes.remote, result: undefined });
 	a.deep(called, ['validate', 'remote:remoteSave', 'remote:processResponse']);
 	clear.call(called);
 };
