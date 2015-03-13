@@ -17,6 +17,7 @@ module.exports = function (t, a) {
 		}
 	};
 	a.not(result = t(conf), conf);
+	a(result.foo.redirectUrl, conf.foo.redirectUrl);
 	result.foo.controller();
 	a.deep(called, ['foo:validate', 'foo:save']);
 	clear.call(called);
