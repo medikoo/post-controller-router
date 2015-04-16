@@ -7,19 +7,19 @@ module.exports = function (t, a) {
 	conf = {
 		foo: {
 			validate: function () { called.push('foo:validate'); },
-			save: function () { called.push('foo:save'); },
+			submit: function () { called.push('foo:submit'); },
 			redirectUrl: 'marko'
 		},
 		'elo/[a-z]+': {
 			match: function (a1) { called.push('elo:match'); },
 			validate: function () { called.push('elo:validate'); },
-			save: function () { called.push('elo:save'); }
+			submit: function () { called.push('elo:submit'); }
 		}
 	};
 	a.not(result = t(conf), conf);
 	a(result.foo.redirectUrl, conf.foo.redirectUrl);
 	result.foo.controller();
-	a.deep(called, ['foo:validate', 'foo:save']);
+	a.deep(called, ['foo:validate', 'foo:submit']);
 	clear.call(called);
 
 	a(result.foo.redirectUrl, 'marko');
@@ -27,7 +27,7 @@ module.exports = function (t, a) {
 	a.deep(result['elo/[a-z]+'], { match: conf['elo/[a-z]+'].match,
 		controller: result['elo/[a-z]+'].controller });
 	result['elo/[a-z]+'].controller();
-	a.deep(called, ['elo:validate', 'elo:save']);
+	a.deep(called, ['elo:validate', 'elo:submit']);
 	clear.call(called);
 
 	conf.bla = true;
@@ -41,21 +41,21 @@ module.exports = function (t, a) {
 	t(conf, opts);
 
 	conf.bla = true;
-	a.throws(function () { t(conf, opts); }, 'MISSING_SAVE');
+	a.throws(function () { t(conf, opts); }, 'MISSING_SUBMIT');
 	delete conf.bla;
 
-	delete conf.foo.save;
-	a.throws(function () { t(conf, opts); }, 'MISSING_SAVE');
+	delete conf.foo.submit;
+	a.throws(function () { t(conf, opts); }, 'MISSING_SUBMIT');
 
-	opts.save = function () {};
+	opts.submit = function () {};
 	t(conf, opts);
 
 	conf.bla = true;
 	t(conf, opts);
 
-	conf.foo.remoteSave = true;
-	a.throws(function () { t(conf, opts); }, 'MISSING_REMOTE_SAVE');
+	conf.foo.remoteSubmit = true;
+	a.throws(function () { t(conf, opts); }, 'MISSING_REMOTE_SUBMIT');
 
-	opts.remoteSave = function () {};
+	opts.remoteSubmit = function () {};
 	t(conf, opts);
 };
