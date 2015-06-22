@@ -1,5 +1,5 @@
 # post-controller-router
-## Generic controller router, dedicated for update requests
+## Controller router dedicated for update requests
 
 Extension to [controler-router](https://github.com/medikoo/controller-router) which splits controller into __validation__ and __submission__ steps, and provides option to pass processing to remote entity.
 
