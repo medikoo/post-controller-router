@@ -3,4 +3,7 @@
 var getRouter = require('controller-router')
   , normalize = require('./lib/normalize');
 
-module.exports = function (conf/*, options*/) { return getRouter(normalize(conf, arguments[1])); };
+module.exports = function (conf/*, options*/) {
+	var options = Object(arguments[1]);
+	return getRouter(normalize(conf, options), options);
+};
