@@ -3,7 +3,7 @@
 var clear = require('es5-ext/array/#/clear');
 
 module.exports = function (t, a) {
-	var conf = {}, router, called = [];
+	var conf = {}, router, called = [], event = {};
 	conf = {
 		foo: {
 			validate: function () { called.push('foo:validate'); },
@@ -36,15 +36,18 @@ module.exports = function (t, a) {
 			called.push('submit');
 		}
 	});
-	a.deep(router('foo'), { conf: router.routes.foo, result: undefined });
+	a.deep(router.call(event, 'foo'),
+		{ conf: router.routes.foo, result: undefined, event: event });
 	a.deep(called, ['foo:validate', 'foo:submit']);
 	clear.call(called);
 
-	a.deep(router('elo/fiszka'), { conf: router.routes['elo/[a-z]+'], result: undefined });
+	a.deep(router.call(event, 'elo/fiszka'),
+		{ conf: router.routes['elo/[a-z]+'], result: undefined, event: event });
 	a.deep(called, ['elo:match', 'elo:validate', 'elo:submit']);
 	clear.call(called);
 
-	a.deep(router('remote'), { conf: router.routes.remote, result: undefined });
+	a.deep(router.call(event, 'remote'),
+		{ conf: router.routes.remote, result: undefined, event: event });
 	a.deep(called, ['validate', 'remote:remoteSubmit', 'remote:processResponse']);
 	clear.call(called);
 };
