@@ -3,6 +3,8 @@
 
 Extension to [controler-router](https://github.com/medikoo/controller-router) which splits controller into __validation__ and __submission__ steps, and provides option to pass processing to remote entity.
 
+It can be used to e.g. handle form submissions in browsers, or POST requests on server-side.
+
 Be sure to read [controler-router](https://github.com/medikoo/controller-router) documentation first.
 
 Basic usage example:
