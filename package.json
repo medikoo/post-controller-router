@@ -1,6 +1,6 @@
 {
   "name": "post-controller-router",
-  "version": "1.0.0",
+  "version": "2.0.0",
   "description": "Controller router dedicated for update requests",
   "author": "Mariusz Nowak <medyk@medikoo.com> (http://www.medikoo.com/)",
   "keywords": [
@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "es5-ext": "^0.10.7",
-    "controller-router": "^1.0.0",
+    "controller-router": "2",
     "is-promise": "2"
   },
   "devDependencies": {
