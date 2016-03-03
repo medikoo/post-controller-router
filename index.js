@@ -52,7 +52,7 @@ var PostControllerRouter = module.exports = Object.defineProperties(function (ro
 				}
 			}
 			if (conf.submit == null) {
-				if (conf.remoteSubmit != null) {
+				if (conf.remoteSubmit) {
 					if (conf.remoteSubmit === true) {
 						if (!defRemoteSubmit) {
 							throw customError("Missing remoteSubmit function for " + stringify(path),
