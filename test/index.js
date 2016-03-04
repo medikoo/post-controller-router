@@ -1,6 +1,7 @@
 'use strict';
 
-var clear = require('es5-ext/array/#/clear');
+var clear   = require('es5-ext/array/#/clear')
+  , Promise = require('plain-promise');
 
 module.exports = {
 	Ensure: function (T, a) {
@@ -58,8 +59,8 @@ module.exports = {
 		opts.remoteSubmit = function () {};
 		T.ensureRoutes(conf, opts);
 	},
-	Router: function (T, a) {
-		var conf = {}, router, called = [], event = {};
+	Router: function (T, a, d) {
+		var conf = {}, router, called = [], event = {}, result;
 		conf = {
 			foo: {
 				validate: function () { called.push('foo:validate'); },
@@ -72,6 +73,19 @@ module.exports = {
 				submit: function () { called.push('elo:submit'); }
 			},
 			miszka: true,
+			async: {
+				validate: function () {
+					this.arg = 'asyncarg';
+					return new Promise(function (resolve) {
+						called.push('async:validate');
+						resolve('asyncresult');
+					});
+				},
+				submit: function () {
+					this.marko = this.arg + 'elo';
+					called.push('async:submit');
+				}
+			},
 			remote: {
 				remoteSubmit: function (x) {
 					called.push('remote:remoteSubmit');
@@ -106,5 +120,14 @@ module.exports = {
 			{ conf: conf.remote, result: undefined, event: event });
 		a.deep(called, ['validate', 'remote:remoteSubmit', 'remote:processResponse']);
 		clear.call(called);
+
+		event = {};
+		result = router.routeEvent(event, 'async');
+		a.deep(result, { conf: conf.async, result: result.result, event: event });
+		result.result.done(function () {
+			a.deep(called, ['async:validate', 'async:submit']);
+			a.deep(event, { path: 'async', arg: 'asyncarg', marko: 'asyncargelo' });
+			d();
+		}, d);
 	}
 };

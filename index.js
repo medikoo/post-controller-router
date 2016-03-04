@@ -132,7 +132,7 @@ var PostControllerRouter = module.exports = Object.defineProperties(function (ro
 						var args = [result];
 						push.apply(args, inputArgs);
 						return submit.apply(this, args);
-					});
+					}.bind(this));
 				}
 				args = [result];
 				push.apply(args, inputArgs);
