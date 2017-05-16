@@ -123,8 +123,8 @@ module.exports = {
 
 		event = {};
 		result = router.routeEvent(event, 'async');
-		a.deep(result, { conf: conf.async, result: result.result, event: event });
-		result.result.done(function () {
+		result.done(function (result) {
+			a.deep(result, { conf: conf.async, result: result.result, event: event });
 			a.deep(called, ['async:validate', 'async:submit']);
 			a.deep(event, { path: 'async', arg: 'asyncarg', marko: 'asyncargelo' });
 			d();
