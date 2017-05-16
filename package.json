@@ -18,16 +18,16 @@
     "url": "git://github.com/medikoo/post-controller.git"
   },
   "dependencies": {
-    "d": "^0.1.1",
-    "es5-ext": "^0.10.7",
-    "controller-router": "2",
-    "is-promise": "2"
+    "d": "1",
+    "es5-ext": "^0.10.18",
+    "controller-router": "^3.4",
+    "is-promise": "^2.1"
   },
   "devDependencies": {
     "plain-promise": "^0.1.1",
-    "tad": "^0.2.3",
+    "tad": "^0.2.7",
     "xlint": "^0.2.2",
-    "xlint-jslint-medikoo": "^0.1.3"
+    "xlint-jslint-medikoo": "^0.1.4"
   },
   "scripts": {
     "lint": "node node_modules/xlint/bin/xlint --linter=node_modules/xlint-jslint-medikoo/index.js --no-cache --no-stream",
