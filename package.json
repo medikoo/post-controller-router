@@ -1,6 +1,6 @@
 {
   "name": "post-controller-router",
-  "version": "2.0.1",
+  "version": "3.0.0",
   "description": "Controller router dedicated for update requests",
   "author": "Mariusz Nowak <medyk@medikoo.com> (http://www.medikoo.com/)",
   "keywords": [

@@ -1,3 +1,8 @@
+v3.0.0  --  2017.05.16
+* Fix handling of asynchronous controller results
+* Improve validation of `remoteSubmit`
+* Update dependencies
+
 v2.0.1  --  2015.06.25
 * Add missing dependency (d)
 
