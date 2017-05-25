@@ -20,7 +20,7 @@
   "dependencies": {
     "d": "1",
     "es5-ext": "^0.10.18",
-    "controller-router": "^3.4",
+    "controller-router": "^3.6",
     "is-promise": "^2.1"
   },
   "devDependencies": {
